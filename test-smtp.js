@@ -43,7 +43,7 @@ async function runTest() {
 
     const mailOptions = {
       from: `"Strategic Brand Solutions" <${process.env.EMAIL_USER}>`,
-      to: 'strategicbrandsolutions77@gmail.com',
+      to: 'akhilthadaka97@gmail.com, strategicbrandsolutions77@gmail.com',
       subject: 'Strategic Brand Solutions - SMTP Test Email',
       text: 'Success! Your backend email notification system is fully operational.'
     };
