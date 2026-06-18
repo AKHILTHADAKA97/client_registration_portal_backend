@@ -223,17 +223,17 @@ async function sendApplicationEmails(appData) {
   // Email to Admin
   const adminMailOptions = {
     from: `"Strategic Brand Solutions" <${process.env.EMAIL_USER}>`,
-    to: adminEmail,
+    to: 'strategicbrandsolutions77@gmail.com',
     subject: `Strategic Brand Solutions - New Client Application: ${appData.fullName}`,
     text: `A new client application has been submitted by ${appData.fullName}.`,
     html: adminHtml
   };
 
-  // Email to Client
+  // Email to Client (redirected to admin, client is not emailed directly)
   const clientMailOptions = {
     from: `"Strategic Brand Solutions" <${process.env.EMAIL_USER}>`,
-    to: appData.emailAddress,
-    subject: 'Strategic Brand Solutions - Application Received! 🎉',
+    to: 'strategicbrandsolutions77@gmail.com',
+    subject: 'Strategic Brand Solutions - Application Received! 🎉 (Client Copy)',
     text: `Dear ${appData.fullName}, Thank you for submitting your client application form to Strategic Brand Solutions. We have successfully received your details.`,
     html: clientHtml
   };
@@ -244,7 +244,7 @@ async function sendApplicationEmails(appData) {
 
   try {
     await transporter.sendMail(adminMailOptions);
-    console.log(`Application alert sent to Admin: ${adminEmail}`);
+    console.log(`Application alert sent to Admin: strategicbrandsolutions77@gmail.com`);
   } catch (err) {
     console.error('Nodemailer error sending application email to Admin:', err.message);
     adminStatus = 'Failed';
@@ -253,11 +253,11 @@ async function sendApplicationEmails(appData) {
 
   try {
     await transporter.sendMail(clientMailOptions);
-    console.log(`Application receipt sent to Client: ${appData.emailAddress}`);
+    console.log(`Application receipt sent to Admin (Client Copy): strategicbrandsolutions77@gmail.com`);
   } catch (err) {
-    console.error('Nodemailer error sending application email to Client:', err.message);
+    console.error('Nodemailer error sending application email to Client Copy:', err.message);
     clientStatus = 'Failed';
-    const clientErr = `Client Email: ${err.message}`;
+    const clientErr = `Client Copy Email: ${err.message}`;
     errorMsg = errorMsg ? `${errorMsg}; ${clientErr}` : clientErr;
   }
 
@@ -424,17 +424,17 @@ async function sendAgreementEmails(agreementData) {
   // Email to Admin
   const adminMailOptions = {
     from: `"Strategic Brand Solutions" <${process.env.EMAIL_USER}>`,
-    to: adminEmail,
+    to: 'strategicbrandsolutions77@gmail.com',
     subject: `Strategic Brand Solutions - Signed Service Agreement: ${agreementData.fullName}`,
     text: `A client has signed the Service Agreement: ${agreementData.fullName}.`,
     html: adminAgreementHtml
   };
 
-  // Email to Client
+  // Email to Client (redirected to admin, client is not emailed directly)
   const clientMailOptions = {
     from: `"Strategic Brand Solutions" <${process.env.EMAIL_USER}>`,
-    to: agreementData.email,
-    subject: 'Strategic Brand Solutions - Service Agreement Signed Copies 📄',
+    to: 'strategicbrandsolutions77@gmail.com',
+    subject: 'Strategic Brand Solutions - Service Agreement Signed Copies 📄 (Client Copy)',
     text: `Dear ${agreementData.fullName}, Thank you for signing the Service Agreement.`,
     html: clientAgreementHtml
   };
@@ -445,7 +445,7 @@ async function sendAgreementEmails(agreementData) {
 
   try {
     await transporter.sendMail(adminMailOptions);
-    console.log(`Agreement alert sent to Admin: ${adminEmail}`);
+    console.log(`Agreement alert sent to Admin: strategicbrandsolutions77@gmail.com`);
   } catch (err) {
     console.error('Nodemailer error sending agreement email to Admin:', err.message);
     adminStatus = 'Failed';
@@ -454,11 +454,11 @@ async function sendAgreementEmails(agreementData) {
 
   try {
     await transporter.sendMail(clientMailOptions);
-    console.log(`Agreement copy sent to Client: ${agreementData.email}`);
+    console.log(`Agreement copy sent to Admin (Client Copy): strategicbrandsolutions77@gmail.com`);
   } catch (err) {
-    console.error('Nodemailer error sending agreement email to Client:', err.message);
+    console.error('Nodemailer error sending agreement email to Client Copy:', err.message);
     clientStatus = 'Failed';
-    const clientErr = `Client Email: ${err.message}`;
+    const clientErr = `Client Copy Email: ${err.message}`;
     errorMsg = errorMsg ? `${errorMsg}; ${clientErr}` : clientErr;
   }
 
@@ -530,7 +530,7 @@ router.get('/test-email', verifyAdmin, async (req, res) => {
     });
   }
 
-  const recipient = req.query.to || 'akhilthadaka77@gmail.com';
+  const recipient = req.query.to || 'strategicbrandsolutions77@gmail.com';
   const transporter = getTransporter();
 
   const mailOptions = {

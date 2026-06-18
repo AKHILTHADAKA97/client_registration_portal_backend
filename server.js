@@ -17,7 +17,7 @@ app.use(express.json());
 app.use('/api', apiRoutes);
 
 // Connect to MongoDB
-const PORT = process.env.PORT || 5000;
+const PORT = parseInt(process.env.PORT, 10) || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/client_app_db';
 
 mongoose.connect(MONGO_URI)
